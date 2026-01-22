@@ -4,6 +4,7 @@ body {
     align-items: center;
     min-height: 100vh;
     background: #fc1e8a;
+    user-select: none; /*O usuário não consegue selecionar os EMOJIS*/
 }
 
 .container {
@@ -65,4 +66,28 @@ h2 {
     align-items: center;
     justify-content: center;
     background-color: #fff;
+
+    font-size: 4em; /*Altera o tamanho dos EMOJIS*/
+    transform: rotateY(180deg);
+    transition-duration: 0.3s;
+}
+
+.item::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: #404040;
+    transform: rotateY(0deg);
+    transition-duration: 0.3s;
+    backface-visibility: hidden;
+    opacity: 0.80;
+}
+
+.item.boxOpen {
+    transform: rotateY(0deg);
+}
+
+.item.boxOpen::after,
+.item.boxMatch::after {
+    transform: rotateY(180deg);
 }
